@@ -1,2 +1,0 @@
-# Existing files are served as themselves. Every other path loads the client app.
-/*    /index.html   200
