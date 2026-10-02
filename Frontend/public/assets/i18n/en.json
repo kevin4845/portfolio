@@ -1,0 +1,277 @@
+{
+  "meta": {
+    "title": "Kevin Møller Madsen — Software Developer",
+    "description": "Kevin Møller Madsen builds software from the interface down to the system it runs on, and likes the part where it has to actually work."
+  },
+  "skip": "Skip to content",
+  "nav": {
+    "primary": "Primary",
+    "about": "About",
+    "skills": "Skills",
+    "experience": "Experience",
+    "projects": "Projects",
+    "education": "Education",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "language": {
+    "label": "Language",
+    "names": {
+      "en": "English",
+      "da": "Dansk"
+    }
+  },
+  "hero": {
+    "eyebrow": "Software Developer",
+    "lead": "I build software from the interface down to the system it runs on. I like the part where it has to actually work.",
+    "primaryCta": "View my work",
+    "secondaryCta": "Get in touch"
+  },
+  "about": {
+    "label": "About",
+    "title": "I like turning things that don't work into things that do.",
+    "paragraphs": [
+      "Usually that means software. Something is unclear, slow, or broken, and I want to understand it before I start changing it.",
+      "I like the whole path, not only the framework in front of me. The screen someone uses, the API behind it, and the machine it runs on are one problem.",
+      "Away from the computer I am often in the workshop, taking something mechanical apart, or playing drums. I like both. They are a good reminder that not every problem lives in a text editor."
+    ],
+    "interestsLabel": "Also",
+    "portraitAlt": "Portrait of Kevin Møller Madsen."
+  },
+  "skills": {
+    "label": "Skills",
+    "title": "What I work with",
+    "intro": "I would rather understand a tool than collect them. These are the ones I use.",
+    "groups": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "infrastructure": "Infrastructure",
+      "data": "Databases & services",
+      "realtime": "Real-time & communication"
+    }
+  },
+  "experience": {
+    "label": "Experience",
+    "title": "Where I've worked",
+    "intro": "The technical work, from installing screens to leading a development team.",
+    "empty": "Experience will be added here.",
+    "entries": {
+      "bluenordix-lead": {
+        "role": "Technical Lead",
+        "employmentType": "Full-time",
+        "period": "Feb 2025 – Present",
+        "summary": "I lead development and still build with the team. The day-to-day is technical direction, architecture, and quality: keeping the codebase and the systems maintainable, rather than managing from a distance.",
+        "technologies": ["Architecture", "Quality assurance"]
+      },
+      "bluenordix-apprentice": {
+        "role": "Full Stack Developer",
+        "employmentType": "Apprenticeship",
+        "period": "Nov 2021 – Jan 2025",
+        "summary": "My apprenticeship, on production software with a small team. I worked across the stack and took on significant parts of the product. It was hands-on development during vocational training, not a stretch of ordinary full-time employment.",
+        "technologies": ["Angular", "Laravel", "AWS"]
+      },
+      "pcv-data": {
+        "role": "Scrum Master",
+        "employmentType": "Full-time",
+        "period": "Mar 2021 – Oct 2021",
+        "summary": "I led the team as Scrum Master and kept a hand in the code. A shorter, full-time role, mostly about how a team builds software together.",
+        "technologies": ["Git", "C#", "PHP"]
+      },
+      "i-develop": {
+        "role": "Full Stack Developer",
+        "employmentType": "Apprenticeship",
+        "period": "Aug 2020 – Mar 2021",
+        "summary": "An earlier part of the apprenticeship. I built interactive display solutions for customers, from the pages they used through to the data behind them.",
+        "technologies": ["JavaScript", "jQuery", "PHP", "Laravel", "MySQL"]
+      },
+      "nordicscreen": {
+        "role": "IT Helper",
+        "employmentType": "Freelance",
+        "period": "Apr 2018 – Dec 2019",
+        "summary": "I set up and prepared physical information-screen installations. Not software development, but it is where the technical work started.",
+        "technologies": []
+      }
+    }
+  },
+  "projects": {
+    "label": "Projects",
+    "title": "Things I've built",
+    "intro": "A short list, on purpose. This site is one of them. The others are still being written up.",
+    "empty": "Projects will be added here.",
+    "view": "View project",
+    "github": "GitHub",
+    "live": "Visit site",
+    "linkGithub": "{{name}} on GitHub",
+    "linkLive": "{{name}} live site",
+    "items": {
+      "personal-portfolio": {
+        "name": "Personal Portfolio",
+        "category": "Application",
+        "summary": "A portfolio website that is also a software project — designed and built from scratch.",
+        "type": "Web application",
+        "imageAlt": "The portfolio homepage, with the name Kevin Møller Madsen and two actions.",
+        "sourceNote": "The source is public on GitHub, for anyone who wants to see how the portfolio is built.",
+        "overview": [
+          "This is my personal portfolio. I designed and built it as a custom Angular application, with a Laravel backend, in a monorepo.",
+          "It presents my work, experience, skills, and background. It is also a software project in its own right: the same one you are looking at.",
+          "I did not want an online CV and nothing else. The portfolio is a chance to show how I approach a product: the interface, the structure, and the problems along the way."
+        ],
+        "role": [
+          {
+            "area": "Frontend",
+            "detail": "I designed and built the interface, from the page structure to the type and the feature components."
+          },
+          {
+            "area": "Backend",
+            "detail": "Laravel lives in the same repository. I run it locally with DDEV. The pages do not call it yet."
+          },
+          {
+            "area": "Architecture",
+            "detail": "The layout reads typed data through one service, so the pages are not tied to the files that hold the content today."
+          }
+        ],
+        "architecture": {
+          "paragraphs": [
+            "The repository has two applications side by side. Frontend/ is the Angular site. Backend/ is Laravel.",
+            "Feature components read that service. It is the place an API can take over later."
+          ],
+          "diagram": "portfolio/\n├── Frontend/    Angular application\n└── Backend/     Laravel application"
+        },
+        "decisions": [
+          { "title": "Angular and TypeScript", "body": "Standalone components, grouped by feature." },
+          { "title": "Laravel and DDEV", "body": "The backend is PHP, developed locally with DDEV." },
+          { "title": "One repository", "body": "Frontend and Backend sit next to each other." },
+          {
+            "title": "A portfolio service",
+            "body": "Templates read the service. The copy and the records sit behind it, not inside the layout."
+          },
+          {
+            "title": "Fluid layout",
+            "body": "Type and spacing grow with the screen, then stop, so a large display does not turn the page into a billboard."
+          },
+          {
+            "title": "A quiet interface",
+            "body": "Near-black, with deep navy in it. Motion is an entrance and a hover, then it stops."
+          }
+        ],
+        "challenges": [
+          {
+            "problem": "The page had to stay comfortable on a phone, fit a 1080p display, and still not look like a narrow column on a much larger screen.",
+            "approach": "Sizes are fluid up to a point, and the reading column has a maximum width. Past that, the page stops growing."
+          },
+          {
+            "problem": "The first navigation highlight followed how much of a section was on screen. A tall section could stay active after the reader had moved on.",
+            "approach": "The active item is now the last section that has passed a line just under the header."
+          }
+        ],
+        "result": [
+          "The site is what I use to present the work. Building it is part of what it demonstrates.",
+          "This page is the template for the other projects, once they are written up."
+        ],
+        "screenshots": [
+          {
+            "alt": "The portfolio homepage, with the name Kevin Møller Madsen and two actions.",
+            "caption": "Homepage"
+          },
+          {
+            "alt": "The About section, with a portrait beside the heading.",
+            "caption": "About"
+          },
+          {
+            "alt": "The Skills section, grouped into rows.",
+            "caption": "Skills"
+          },
+          {
+            "alt": "The Experience timeline, starting with BlueNordix.",
+            "caption": "Experience"
+          },
+          {
+            "alt": "The Projects section, with large project cards.",
+            "caption": "Projects"
+          },
+          {
+            "alt": "The Education section, with Data Technician as the main entry.",
+            "caption": "Education"
+          }
+        ]
+      },
+      "pimena": {
+        "name": "Pimena",
+        "category": "Project",
+        "summary": "A real project. I still need to write up what it is, what I did, and where to see it."
+      },
+      "bluenordix": {
+        "name": "BlueNordix",
+        "category": "Project",
+        "summary": "A real project. I still need to write up what it is, what I did, and where to see it."
+      },
+      "pim-system": {
+        "name": "PIM System",
+        "category": "Project",
+        "summary": "A real project. I still need to write up what it is, what I did, and where to see it."
+      },
+      "proximity-voice": {
+        "name": "Proximity Voice",
+        "category": "Project",
+        "summary": "A real project. I still need to write up what it is, what I did, and where to see it."
+      }
+    }
+  },
+  "projectDetail": {
+    "back": "Back to projects",
+    "missingTitle": "Project not found",
+    "missingBody": "This project is not in the portfolio.",
+    "backHome": "Back to the portfolio",
+    "type": "Type",
+    "period": "Period",
+    "status": "Status",
+    "technologies": "Technologies",
+    "github": "GitHub",
+    "live": "Visit site",
+    "overview": "Overview",
+    "role": "My role",
+    "architecture": "Architecture",
+    "decisions": "Technical decisions",
+    "challenges": "Challenges",
+    "result": "Result",
+    "screenshots": "Screenshots"
+  },
+  "education": {
+    "label": "Education",
+    "title": "Where I learned the craft",
+    "intro": "My background started with a vocational education in programming, combining school with real-world apprenticeship experience.",
+    "empty": "Education will be added here.",
+    "entries": {
+      "data-technician": {
+        "credential": "Data Technician",
+        "specialization": "Specialization in Programming",
+        "kind": "Vocational Education",
+        "period": "Aug 2020 – Feb 2025",
+        "summary": "A practical education combining programming, software development, systems and IT with hands-on apprenticeship experience."
+      },
+      "tradium-htx": {
+        "credential": "Media & Game Design",
+        "kind": "Upper Secondary Education",
+        "period": "Aug 2018 – Apr 2019",
+        "summary": "An earlier interest in technology, media and game development."
+      }
+    }
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Let's build something.",
+    "lead": "If you have something to build, or something that is not working yet, I would like to hear about it."
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  },
+  "profile": {
+    "role": "Software Developer",
+    "links": {
+      "email": "Email",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<footer class="border-t border-line">
+  <div
+    class="site-container flex flex-col gap-8 py-10 sm:flex-row sm:items-end sm:justify-between"
+  >
+    <div>
+      <p class="text-sm font-medium text-ink">{{ profile().name }}</p>
+      <p class="mt-1 text-sm text-faint">{{ 'profile.role' | transloco }}</p>
+    </div>
+
+    <ul class="flex flex-wrap gap-x-5 gap-y-2">
+      @for (link of profile().links; track link.id) {
+        <li>
+          <a
+            class="text-sm text-muted transition-colors hover:text-ink"
+            [href]="link.href"
+            [attr.target]="link.external ? '_blank' : null"
+            [attr.rel]="link.external ? 'noopener noreferrer' : null"
+          >
+            {{ 'profile.links.' + link.id | transloco }}
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+  <div class="site-container pb-8">
+    <p class="text-xs text-faint">© {{ year }} {{ profile().name }}. {{ 'footer.rights' | transloco }}</p>
+  </div>
+</footer>

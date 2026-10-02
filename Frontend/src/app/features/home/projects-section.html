@@ -1,0 +1,24 @@
+<section id="projects" data-section="projects" class="border-t border-line" aria-labelledby="projects-title">
+  <div class="site-container section-y">
+    <div appReveal>
+      <app-section-heading
+        headingId="projects-title"
+        [label]="'projects.label' | transloco"
+        [title]="'projects.title' | transloco"
+        [intro]="'projects.intro' | transloco"
+      />
+    </div>
+
+    @if (projects().length) {
+      <div class="mt-14 grid gap-6 md:grid-cols-2">
+        @for (project of projects(); track project.slug) {
+          <div appReveal>
+            <app-project-card [project]="project" />
+          </div>
+        }
+      </div>
+    } @else {
+      <p class="mt-12 text-muted">{{ 'projects.empty' | transloco }}</p>
+    }
+  </div>
+</section>

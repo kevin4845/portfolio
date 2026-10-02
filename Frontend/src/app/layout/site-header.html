@@ -1,0 +1,74 @@
+<header
+  class="sticky top-0 z-40 border-b transition-[background-color,border-color] duration-300"
+  [class.border-line]="scrolled() || open()"
+  [class.border-transparent]="!scrolled() && !open()"
+  [class.bg-navy-950]="scrolled() || open()"
+>
+  <nav class="nav-bar site-container flex items-center justify-between" [attr.aria-label]="'nav.primary' | transloco">
+    <a routerLink="/" (click)="goHome()" class="nav-name font-medium tracking-tight text-ink">
+      {{ profile().name }}
+    </a>
+
+    <div class="hidden items-center md:flex">
+      <ul class="flex items-center gap-7">
+        @for (id of navigation; track id) {
+          <li>
+            <a
+              class="nav-link relative transition-colors duration-200 hover:text-ink"
+              [class.text-ink]="active() === id"
+              [class.text-faint]="active() !== id"
+              [routerLink]="['/']"
+              [fragment]="id"
+              [attr.aria-current]="active() === id ? 'true' : null"
+              (click)="goTo(id)"
+            >
+              {{ 'nav.' + id | transloco }}
+              <span
+                class="absolute -bottom-1.5 left-0 h-px w-full origin-left bg-accent transition-transform duration-300"
+                [class.scale-x-100]="active() === id"
+                [class.scale-x-0]="active() !== id"
+                aria-hidden="true"
+              ></span>
+            </a>
+          </li>
+        }
+      </ul>
+      <div class="ml-8">
+        <app-language-switch />
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="nav-link text-ink md:hidden"
+      [attr.aria-expanded]="open()"
+      aria-controls="mobile-nav"
+      (click)="toggleMenu()"
+    >
+      {{ open() ? ('nav.close' | transloco) : ('nav.menu' | transloco) }}
+    </button>
+  </nav>
+
+  @if (open()) {
+    <div id="mobile-nav" class="border-t border-line px-6 py-2 md:hidden">
+      <ul class="flex flex-col">
+        @for (id of navigation; track id) {
+          <li>
+            <a
+              class="block py-3 text-base text-muted transition-colors hover:text-ink"
+              [class.text-ink]="active() === id"
+              [routerLink]="['/']"
+              [fragment]="id"
+              (click)="goTo(id)"
+            >
+              {{ 'nav.' + id | transloco }}
+            </a>
+          </li>
+        }
+      </ul>
+      <div class="border-t border-line py-4">
+        <app-language-switch />
+      </div>
+    </div>
+  }
+</header>

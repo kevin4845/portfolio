@@ -1,0 +1,249 @@
+@if (project(); as project) {
+  @if (story(); as story) {
+    <article class="site-container project-page">
+      <div class="project-stage">
+        <a class="text-sm text-muted transition-colors hover:text-ink" routerLink="/" fragment="projects">
+          ← {{ 'projectDetail.back' | transloco }}
+        </a>
+
+        <header class="mt-6">
+          <p class="text-xs font-medium tracking-[0.18em] text-faint uppercase">
+            {{ story.category }}
+          </p>
+          <h1 class="project-title mt-3 font-medium text-balance text-ink">
+            {{ story.name }}
+          </h1>
+          <p class="project-summary text-muted">{{ story.summary }}</p>
+
+          @if (story.type || story.period || story.status) {
+            <ul class="project-meta mt-5 flex flex-wrap items-baseline text-sm text-muted">
+              @if (story.type) {
+                <li>
+                  <span class="text-faint">{{ 'projectDetail.type' | transloco }}</span>
+                  {{ story.type }}
+                </li>
+              }
+              @if (story.period) {
+                <li>
+                  <span class="text-faint">{{ 'projectDetail.period' | transloco }}</span>
+                  {{ story.period }}
+                </li>
+              }
+              @if (story.status) {
+                <li>
+                  <span class="text-faint">{{ 'projectDetail.status' | transloco }}</span>
+                  {{ story.status }}
+                </li>
+              }
+            </ul>
+          }
+        </header>
+
+        <div class="mt-8">
+          @if (project.image; as image) {
+            <app-project-figure
+              [image]="{ src: image.src, alt: story.imageAlt || story.name }"
+              loading="eager"
+            />
+          } @else {
+            <div class="project-frame">
+              <app-project-mark [name]="story.name" />
+            </div>
+          }
+        </div>
+
+        @if (project.technologies.length) {
+          <ul class="mt-6 flex flex-wrap gap-2" [attr.aria-label]="'projectDetail.technologies' | transloco">
+            @for (technology of project.technologies; track technology) {
+              <li class="rounded-full border border-line px-2.5 py-1 text-sm text-muted">
+                {{ technology }}
+              </li>
+            }
+          </ul>
+        }
+
+        @if (hasLinks(project)) {
+          <ul class="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+            @if (project.liveUrl; as liveUrl) {
+              <li>
+                <a
+                  class="text-sm text-ink underline decoration-white/25 underline-offset-4 transition-colors hover:decoration-white/60"
+                  [href]="liveUrl"
+                  [attr.target]="external(liveUrl) ? '_blank' : null"
+                  [attr.rel]="external(liveUrl) ? 'noopener noreferrer' : null"
+                >
+                  {{ 'projectDetail.live' | transloco }}
+                </a>
+              </li>
+            }
+            @if (project.githubUrl; as githubUrl) {
+              <li>
+                <a
+                  class="text-sm text-ink underline decoration-white/25 underline-offset-4 transition-colors hover:decoration-white/60"
+                  [href]="githubUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {{ 'projectDetail.github' | transloco }}
+                </a>
+              </li>
+            }
+            @for (link of project.links; track link.href) {
+              <li>
+                <a
+                  class="text-sm text-ink underline decoration-white/25 underline-offset-4 transition-colors hover:decoration-white/60"
+                  [href]="link.href"
+                  [attr.target]="external(link.href) ? '_blank' : null"
+                  [attr.rel]="external(link.href) ? 'noopener noreferrer' : null"
+                >
+                  {{ 'projects.items.' + project.slug + '.links.' + link.id | transloco }}
+                </a>
+              </li>
+            }
+          </ul>
+        }
+
+        @if (story.sourceNote) {
+          <p class="mt-3 max-w-[42rem] text-sm leading-relaxed text-muted">{{ story.sourceNote }}</p>
+        }
+
+        @if (story.overview?.length) {
+          <section class="project-block" aria-labelledby="project-overview">
+            <h2 id="project-overview" class="project-heading text-ink">
+              {{ 'projectDetail.overview' | transloco }}
+            </h2>
+            <div class="project-copy">
+              @for (paragraph of story.overview; track paragraph) {
+                <p class="project-prose text-muted">{{ paragraph }}</p>
+              }
+            </div>
+          </section>
+        }
+
+        @if (story.role?.length) {
+          <section class="project-block" aria-labelledby="project-role">
+            <h2 id="project-role" class="project-heading text-ink">
+              {{ 'projectDetail.role' | transloco }}
+            </h2>
+            <ul class="project-points">
+              @for (item of story.role; track item.area) {
+                <li>
+                  <p class="project-kicker text-ink">{{ item.area }}</p>
+                  @if (item.detail) {
+                    <p class="project-prose mt-1 text-muted">{{ item.detail }}</p>
+                  }
+                </li>
+              }
+            </ul>
+          </section>
+        }
+
+        @if (story.architecture; as architecture) {
+          @if (architecture.paragraphs?.length || architecture.diagram) {
+            <section class="project-block" aria-labelledby="project-architecture">
+              <h2 id="project-architecture" class="project-heading text-ink">
+                {{ 'projectDetail.architecture' | transloco }}
+              </h2>
+              @if (architecture.paragraphs?.length) {
+                <div class="project-copy">
+                  @for (paragraph of architecture.paragraphs; track paragraph) {
+                    <p class="project-prose text-muted">{{ paragraph }}</p>
+                  }
+                </div>
+              }
+              @if (architecture.diagram) {
+                <pre class="project-diagram">{{ architecture.diagram }}</pre>
+              }
+            </section>
+          }
+        }
+
+        @if (story.decisions?.length) {
+          <section class="project-block" aria-labelledby="project-decisions">
+            <h2 id="project-decisions" class="project-heading text-ink">
+              {{ 'projectDetail.decisions' | transloco }}
+            </h2>
+            <ul class="project-points">
+              @for (decision of story.decisions; track decision.body) {
+                <li>
+                  @if (decision.title) {
+                    <p class="project-kicker text-ink">{{ decision.title }}</p>
+                    <p class="project-prose mt-1 text-muted">{{ decision.body }}</p>
+                  } @else {
+                    <p class="project-prose text-muted">{{ decision.body }}</p>
+                  }
+                </li>
+              }
+            </ul>
+          </section>
+        }
+
+        @if (story.challenges?.length) {
+          <section class="project-block" aria-labelledby="project-challenges">
+            <h2 id="project-challenges" class="project-heading text-ink">
+              {{ 'projectDetail.challenges' | transloco }}
+            </h2>
+            <ul class="project-points">
+              @for (challenge of story.challenges; track challenge.problem) {
+                <li>
+                  <p class="project-prose text-ink">{{ challenge.problem }}</p>
+                  @if (challenge.approach) {
+                    <p class="project-prose mt-1 text-muted">{{ challenge.approach }}</p>
+                  }
+                </li>
+              }
+            </ul>
+          </section>
+        }
+
+        @if (story.result?.length) {
+          <section class="project-block" aria-labelledby="project-result">
+            <h2 id="project-result" class="project-heading text-ink">
+              {{ 'projectDetail.result' | transloco }}
+            </h2>
+            <div class="project-copy">
+              @for (paragraph of story.result; track paragraph) {
+                <p class="project-prose text-muted">{{ paragraph }}</p>
+              }
+            </div>
+          </section>
+        }
+
+        @if (project.screenshots?.length) {
+          <section class="project-block project-block-gallery" aria-labelledby="project-screenshots">
+            <h2 id="project-screenshots" class="project-heading text-ink">
+              {{ 'projectDetail.screenshots' | transloco }}
+            </h2>
+            <ul class="project-gallery">
+              @for (shot of project.screenshots; track shot.src; let index = $index) {
+                <li>
+                  <app-project-figure
+                    [image]="{
+                      src: shot.src,
+                      alt: story.screenshots?.[index]?.alt || story.name,
+                      caption: story.screenshots?.[index]?.caption,
+                    }"
+                  />
+                </li>
+              }
+            </ul>
+          </section>
+        }
+
+        <p class="project-back">
+          <a class="text-sm text-muted transition-colors hover:text-ink" routerLink="/" fragment="projects">
+            ← {{ 'projectDetail.back' | transloco }}
+          </a>
+        </p>
+      </div>
+    </article>
+  }
+} @else {
+  <section class="site-container project-page">
+    <div class="project-stage">
+      <h1 class="project-title font-medium text-ink">{{ 'projectDetail.missingTitle' | transloco }}</h1>
+      <p class="project-prose mt-4 text-muted">{{ 'projectDetail.missingBody' | transloco }}</p>
+      <a class="btn btn-secondary mt-8" routerLink="/">{{ 'projectDetail.backHome' | transloco }}</a>
+    </div>
+  </section>
+}

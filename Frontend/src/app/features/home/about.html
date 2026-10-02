@@ -1,0 +1,55 @@
+<section id="about" data-section="about" class="border-t border-line" aria-labelledby="about-title">
+  <div class="site-container section-y" appReveal>
+    <div class="grid items-start gap-10 lg:grid-cols-12 lg:gap-x-16 lg:gap-y-8">
+      <p
+        class="text-xs font-medium tracking-[0.18em] text-faint uppercase lg:col-span-7 lg:col-start-1 lg:row-start-1"
+      >
+        {{ 'about.label' | transloco }}
+      </p>
+
+      <h2
+        id="about-title"
+        class="display-title max-w-xl font-medium text-balance text-ink lg:col-span-7 lg:col-start-1 lg:row-start-2"
+      >
+        {{ 'about.title' | transloco }}
+      </h2>
+
+      <figure
+        class="m-0 w-full max-w-[26rem] lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-2 lg:max-w-[34rem]"
+      >
+        <div class="group overflow-hidden rounded-xl border border-line">
+          <img
+            class="media-zoom aspect-[4/5] w-full object-cover object-[center_22%] transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+            src="kevin01.jpg"
+            width="960"
+            height="1280"
+            [alt]="'about.portraitAlt' | transloco"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </figure>
+
+      <div class="max-w-xl lg:col-span-7 lg:col-start-1 lg:row-start-3 lg:mt-2">
+        <div class="space-y-5 text-base leading-relaxed text-muted lg:text-lg">
+          @for (paragraph of paragraphs(); track paragraph) {
+            <p>{{ paragraph }}</p>
+          }
+        </div>
+
+        @if (interests().length) {
+          <div class="mt-10 border-t border-line pt-6">
+            <h3 class="text-xs font-medium tracking-[0.18em] text-faint uppercase">
+              {{ 'about.interestsLabel' | transloco }}
+            </h3>
+            <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+              @for (interest of interests(); track interest) {
+                <li class="text-sm text-muted">{{ interest }}</li>
+              }
+            </ul>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

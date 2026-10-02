@@ -1,0 +1,48 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+auth.json
+credentials.json
+secrets.json
+
+# Dependencies
+node_modules/
+vendor/
+
+# Build artifacts and caches
+dist/
+.angular/
+.phpunit.cache/
+.phpunit.result.cache
+coverage/
+public/build/
+public/hot/
+public/storage
+
+# Local databases
+*.sqlite
+*.sqlite-journal
+
+# DDEV local and runtime files
+**/.ddev/.dbimageBuild
+**/.ddev/.webimageBuild
+**/.ddev/.homeadditions
+**/.ddev/.*downloads
+**/.ddev/.importdb*
+**/.ddev/.ddev-docker-*.yaml
+**/.ddev/db_snapshots/
+**/.ddev/mutagen/
+**/.ddev/traefik/certs/
+**/.ddev/apache/apache-site.conf
+**/.ddev/nginx_full/nginx-site.conf
+**/.ddev/postgres/postgresql.conf
+**/.ddev/config.local.y*ml
+**/.ddev/config.*.local.y*ml
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+*.log

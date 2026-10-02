@@ -1,0 +1,277 @@
+{
+  "meta": {
+    "title": "Kevin Møller Madsen — Softwareudvikler",
+    "description": "Kevin Møller Madsen bygger software fra grænsefladen og ned til systemet, den kører på, og kan godt lide den del, hvor det faktisk skal virke."
+  },
+  "skip": "Spring til indhold",
+  "nav": {
+    "primary": "Primær",
+    "about": "Om mig",
+    "skills": "Færdigheder",
+    "experience": "Erfaring",
+    "projects": "Projekter",
+    "education": "Uddannelse",
+    "contact": "Kontakt",
+    "menu": "Menu",
+    "close": "Luk"
+  },
+  "language": {
+    "label": "Sprog",
+    "names": {
+      "en": "English",
+      "da": "Dansk"
+    }
+  },
+  "hero": {
+    "eyebrow": "Softwareudvikler",
+    "lead": "Jeg bygger software fra grænsefladen og ned til systemet, den kører på. Jeg kan godt lide den del, hvor det faktisk skal virke.",
+    "primaryCta": "Se mit arbejde",
+    "secondaryCta": "Skriv til mig"
+  },
+  "about": {
+    "label": "Om mig",
+    "title": "Jeg kan godt lide at tage noget, der ikke virker, og få det til at virke.",
+    "paragraphs": [
+      "Det er som regel software. Noget er uklart, langsomt eller gået i stykker, og jeg vil forstå det, før jeg begynder at ændre det.",
+      "Jeg kan godt lide hele vejen, ikke kun det framework, der ligger foran mig. Skærmen nogen bruger, API'et bag den og maskinen, den kører på, er ét problem.",
+      "Væk fra computeren er jeg ofte i værkstedet, hvor jeg skiller noget mekanisk ad, eller også spiller jeg trommer. Jeg kan lide begge dele. De minder mig om, at ikke alle problemer bor i en teksteditor."
+    ],
+    "interestsLabel": "Også",
+    "portraitAlt": "Portræt af Kevin Møller Madsen."
+  },
+  "skills": {
+    "label": "Færdigheder",
+    "title": "Det jeg arbejder med",
+    "intro": "Jeg vil hellere forstå et værktøj end samle på dem. Det her er dem, jeg bruger.",
+    "groups": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "infrastructure": "Infrastruktur",
+      "data": "Databaser og tjenester",
+      "realtime": "Realtid og kommunikation"
+    }
+  },
+  "experience": {
+    "label": "Erfaring",
+    "title": "Hvor jeg har arbejdet",
+    "intro": "Det tekniske arbejde, fra at sætte skærme op til at lede et udviklingsteam.",
+    "empty": "Erfaring bliver tilføjet her.",
+    "entries": {
+      "bluenordix-lead": {
+        "role": "Teknisk lead",
+        "employmentType": "Fuldtid",
+        "period": "feb. 2025 – nu",
+        "summary": "Jeg leder udviklingen og bygger stadig med teamet. Hverdagen er teknisk retning, arkitektur og kvalitet: at holde kodebasen og systemerne vedligeholdelige, i stedet for at lede på afstand.",
+        "technologies": ["Arkitektur", "Kvalitetssikring"]
+      },
+      "bluenordix-apprentice": {
+        "role": "Full stack-udvikler",
+        "employmentType": "Læreplads",
+        "period": "nov. 2021 – jan. 2025",
+        "summary": "Min læreplads, på produktionssoftware med et lille team. Jeg arbejdede på tværs af stakken og tog store dele af produktet. Det var praktisk udvikling under erhvervsuddannelsen, ikke et almindeligt fuldtidsjob.",
+        "technologies": ["Angular", "Laravel", "AWS"]
+      },
+      "pcv-data": {
+        "role": "Scrum Master",
+        "employmentType": "Fuldtid",
+        "period": "mar. 2021 – okt. 2021",
+        "summary": "Jeg ledede teamet som Scrum Master og havde stadig fingrene i koden. En kortere fuldtidsrolle, mest om hvordan et team bygger software sammen.",
+        "technologies": ["Git", "C#", "PHP"]
+      },
+      "i-develop": {
+        "role": "Full stack-udvikler",
+        "employmentType": "Læreplads",
+        "period": "aug. 2020 – mar. 2021",
+        "summary": "En tidligere del af lærepladsen. Jeg byggede interaktive infoskærme til kunder, fra de sider de brugte og ned til dataene bag dem.",
+        "technologies": ["JavaScript", "jQuery", "PHP", "Laravel", "MySQL"]
+      },
+      "nordicscreen": {
+        "role": "IT-hjælper",
+        "employmentType": "Freelance",
+        "period": "apr. 2018 – dec. 2019",
+        "summary": "Jeg satte fysiske infoskærme op og gjorde dem klar. Ikke softwareudvikling, men det var dér, det tekniske arbejde startede.",
+        "technologies": []
+      }
+    }
+  },
+  "projects": {
+    "label": "Projekter",
+    "title": "Ting jeg har bygget",
+    "intro": "En kort liste, med vilje. Siden her er et af dem. De andre er jeg stadig i gang med at skrive om.",
+    "empty": "Projekter bliver tilføjet her.",
+    "view": "Se projekt",
+    "github": "GitHub",
+    "live": "Besøg siden",
+    "linkGithub": "{{name}} på GitHub",
+    "linkLive": "Besøg {{name}}",
+    "items": {
+      "personal-portfolio": {
+        "name": "Personlig portfolio",
+        "category": "Applikation",
+        "summary": "En porteføljeside, der også er et softwareprojekt — designet og bygget fra bunden.",
+        "type": "Webapplikation",
+        "imageAlt": "Porteføljens forside, med navnet Kevin Møller Madsen og to handlinger.",
+        "sourceNote": "Kildekoden ligger offentligt på GitHub, hvis man vil se, hvordan porteføljen er bygget.",
+        "overview": [
+          "Det her er min personlige portefølje. Jeg har designet og bygget den som en Angular-applikation, med en Laravel-backend, i et monorepo.",
+          "Den viser mit arbejde, min erfaring, mine færdigheder og min baggrund. Den er også et softwareprojekt i sig selv: det samme, du kigger på lige nu.",
+          "Jeg ville ikke have et online CV og ikke andet. Porteføljen er en chance for at vise, hvordan jeg griber et produkt an: grænsefladen, strukturen og problemerne undervejs."
+        ],
+        "role": [
+          {
+            "area": "Frontend",
+            "detail": "Jeg har designet og bygget grænsefladen, fra sidestrukturen til typografien og feature-komponenterne."
+          },
+          {
+            "area": "Backend",
+            "detail": "Laravel ligger i samme repository. Jeg kører den lokalt med DDEV. Siderne kalder den ikke endnu."
+          },
+          {
+            "area": "Arkitektur",
+            "detail": "Layoutet læser typede data gennem én service, så siderne ikke er bundet til de filer, der holder indholdet i dag."
+          }
+        ],
+        "architecture": {
+          "paragraphs": [
+            "Repositoryet har to applikationer ved siden af hinanden. Frontend/ er Angular-sitet. Backend/ er Laravel.",
+            "Feature-komponenterne læser den service. Det er dér, et API kan tage over senere."
+          ],
+          "diagram": "portfolio/\n├── Frontend/    Angular-applikation\n└── Backend/     Laravel-applikation"
+        },
+        "decisions": [
+          { "title": "Angular og TypeScript", "body": "Standalone-komponenter, samlet efter feature." },
+          { "title": "Laravel og DDEV", "body": "Backenden er PHP og udvikles lokalt med DDEV." },
+          { "title": "Ét repository", "body": "Frontend og Backend ligger ved siden af hinanden." },
+          {
+            "title": "En portfolio-service",
+            "body": "Skabelonerne læser servicen. Teksten og dataene ligger bag den, ikke inde i layoutet."
+          },
+          {
+            "title": "Flydende layout",
+            "body": "Typografi og afstand vokser med skærmen og stopper så, så en stor skærm ikke gør siden til en reklametavle."
+          },
+          {
+            "title": "Et roligt udtryk",
+            "body": "Næsten sort, med dyb navy i det. Bevægelse er en entré og et hover, og så stopper det."
+          }
+        ],
+        "challenges": [
+          {
+            "problem": "Siden skulle være til at holde ud på en telefon, passe på en 1080p-skærm og stadig ikke ligne en smal kolonne på en meget større skærm.",
+            "approach": "Størrelserne er flydende op til et punkt, og tekstkolonnen har en maksimal bredde. Derefter vokser siden ikke mere."
+          },
+          {
+            "problem": "Den første navigation markerede en sektion ud fra, hvor meget af den der var på skærmen. En høj sektion kunne blive ved med at være aktiv, efter man var gået videre.",
+            "approach": "Det aktive punkt er nu den seneste sektion, der er passeret en linje lige under headeren."
+          }
+        ],
+        "result": [
+          "Siden er den, jeg bruger til at vise arbejdet. At bygge den er en del af det, den viser.",
+          "Siden her er skabelonen til de andre projekter, når de er skrevet færdige."
+        ],
+        "screenshots": [
+          {
+            "alt": "Porteføljens forside, med navnet Kevin Møller Madsen og to handlinger.",
+            "caption": "Forside"
+          },
+          {
+            "alt": "Om mig-sektionen, med et portræt ved siden af overskriften.",
+            "caption": "Om mig"
+          },
+          {
+            "alt": "Færdighedssektionen, samlet i rækker.",
+            "caption": "Færdigheder"
+          },
+          {
+            "alt": "Erfaringstidslinjen, som starter med BlueNordix.",
+            "caption": "Erfaring"
+          },
+          {
+            "alt": "Projektsektionen, med store projektkort.",
+            "caption": "Projekter"
+          },
+          {
+            "alt": "Uddannelsessektionen, med datatekniker som det primære forløb.",
+            "caption": "Uddannelse"
+          }
+        ]
+      },
+      "pimena": {
+        "name": "Pimena",
+        "category": "Projekt",
+        "summary": "Et rigtigt projekt. Jeg mangler stadig at skrive, hvad det er, hvad jeg har lavet, og hvor man kan se det."
+      },
+      "bluenordix": {
+        "name": "BlueNordix",
+        "category": "Projekt",
+        "summary": "Et rigtigt projekt. Jeg mangler stadig at skrive, hvad det er, hvad jeg har lavet, og hvor man kan se det."
+      },
+      "pim-system": {
+        "name": "PIM System",
+        "category": "Projekt",
+        "summary": "Et rigtigt projekt. Jeg mangler stadig at skrive, hvad det er, hvad jeg har lavet, og hvor man kan se det."
+      },
+      "proximity-voice": {
+        "name": "Proximity Voice",
+        "category": "Projekt",
+        "summary": "Et rigtigt projekt. Jeg mangler stadig at skrive, hvad det er, hvad jeg har lavet, og hvor man kan se det."
+      }
+    }
+  },
+  "projectDetail": {
+    "back": "Tilbage til projekter",
+    "missingTitle": "Projektet blev ikke fundet",
+    "missingBody": "Projektet findes ikke i porteføljen.",
+    "backHome": "Tilbage til porteføljen",
+    "type": "Type",
+    "period": "Periode",
+    "status": "Status",
+    "technologies": "Teknologier",
+    "github": "GitHub",
+    "live": "Besøg siden",
+    "overview": "Overblik",
+    "role": "Min rolle",
+    "architecture": "Arkitektur",
+    "decisions": "Tekniske valg",
+    "challenges": "Udfordringer",
+    "result": "Resultat",
+    "screenshots": "Skærmbilleder"
+  },
+  "education": {
+    "label": "Uddannelse",
+    "title": "Hvor jeg lærte håndværket",
+    "intro": "Min baggrund begyndte med en erhvervsuddannelse i programmering, hvor skole og læreplads hang sammen.",
+    "empty": "Uddannelse bliver tilføjet her.",
+    "entries": {
+      "data-technician": {
+        "credential": "Datatekniker",
+        "specialization": "Speciale i programmering",
+        "kind": "Erhvervsuddannelse",
+        "period": "aug. 2020 – feb. 2025",
+        "summary": "En praktisk uddannelse, der kombinerer programmering, softwareudvikling, systemer og IT med læreplads."
+      },
+      "tradium-htx": {
+        "credential": "Medie- og spildesign",
+        "kind": "Gymnasial uddannelse",
+        "period": "aug. 2018 – apr. 2019",
+        "summary": "En tidligere interesse for teknologi, medier og spiludvikling."
+      }
+    }
+  },
+  "contact": {
+    "label": "Kontakt",
+    "title": "Lad os bygge noget.",
+    "lead": "Hvis du har noget, der skal bygges, eller noget der ikke virker endnu, vil jeg gerne høre om det."
+  },
+  "footer": {
+    "rights": "Alle rettigheder forbeholdes."
+  },
+  "profile": {
+    "role": "Softwareudvikler",
+    "links": {
+      "email": "E-mail",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    }
+  }
+}

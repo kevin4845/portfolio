@@ -1,0 +1,51 @@
+<section
+  id="experience"
+  data-section="experience"
+  class="border-t border-line"
+  aria-labelledby="experience-title"
+>
+  <div class="site-container section-y" appReveal>
+    <app-section-heading
+      headingId="experience-title"
+      [label]="'experience.label' | transloco"
+      [title]="'experience.title' | transloco"
+      [intro]="'experience.intro' | transloco"
+    />
+
+    @if (groups().length) {
+      <ol class="relative mt-14 space-y-14 border-l border-line md:mt-16">
+        @for (group of groups(); track group.company) {
+          <li class="relative pl-8">
+            <span
+              class="absolute top-1.5 -left-[5px] size-2 rounded-full bg-accent"
+              aria-hidden="true"
+            ></span>
+            <p class="text-sm font-medium tracking-tight text-ink">{{ group.company }}</p>
+            <div class="mt-6">
+              @for (role of group.roles; track role.id; let first = $first) {
+                @let story = entry(role.id);
+                <article [class]="first ? '' : 'mt-8 border-t border-line pt-8'">
+                  <p class="text-sm text-faint">{{ story.period }}</p>
+                  <h3 class="mt-2 text-xl font-medium tracking-tight text-ink">{{ story.role }}</h3>
+                  <p class="mt-1 text-sm text-muted">{{ story.employmentType }}</p>
+                  <p class="mt-4 max-w-2xl leading-relaxed text-muted">{{ story.summary }}</p>
+                  @if (story.technologies?.length) {
+                    <ul class="mt-4 flex flex-wrap gap-2">
+                      @for (technology of story.technologies; track technology) {
+                        <li class="rounded-full border border-line px-2.5 py-1 text-xs text-muted">
+                          {{ technology }}
+                        </li>
+                      }
+                    </ul>
+                  }
+                </article>
+              }
+            </div>
+          </li>
+        }
+      </ol>
+    } @else {
+      <p class="mt-12 text-muted">{{ 'experience.empty' | transloco }}</p>
+    }
+  </div>
+</section>

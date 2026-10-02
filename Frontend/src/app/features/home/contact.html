@@ -1,0 +1,44 @@
+<section
+  id="contact"
+  data-section="contact"
+  class="border-t border-line bg-navy-900"
+  aria-labelledby="contact-title"
+>
+  <div class="site-container section-y" appReveal>
+    <p class="text-xs font-medium tracking-[0.18em] text-faint uppercase">{{ 'contact.label' | transloco }}</p>
+    <h2
+      id="contact-title"
+      class="display-title mt-4 max-w-3xl font-medium text-balance text-ink"
+    >
+      {{ 'contact.title' | transloco }}
+    </h2>
+    <p class="mt-5 max-w-xl text-lg leading-relaxed text-muted">{{ 'contact.lead' | transloco }}</p>
+
+    <ul class="mt-12 border-t border-line">
+      @for (link of links(); track link.id) {
+        <li>
+          <a
+            class="group flex items-center justify-between gap-6 border-b border-line py-6 text-2xl font-medium tracking-tight text-ink transition-colors hover:text-white md:py-7 md:text-3xl"
+            [href]="link.href"
+            [attr.target]="link.external ? '_blank' : null"
+            [attr.rel]="link.external ? 'noopener noreferrer' : null"
+          >
+            {{ 'profile.links.' + link.id | transloco }}
+            <svg
+              class="size-5 shrink-0 text-muted transition-transform duration-200 group-hover:translate-x-1"
+              viewBox="0 0 16 16"
+              aria-hidden="true"
+            >
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.25"
+              />
+            </svg>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

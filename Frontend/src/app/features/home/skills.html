@@ -1,0 +1,30 @@
+<section id="skills" data-section="skills" class="border-t border-line" aria-labelledby="skills-title">
+  <div class="site-container section-y" appReveal>
+    <app-section-heading
+      headingId="skills-title"
+      [label]="'skills.label' | transloco"
+      [title]="'skills.title' | transloco"
+      [intro]="'skills.intro' | transloco"
+    />
+
+    <ul class="mt-14 divide-y divide-white/8 border-t border-line">
+      @for (group of groups(); track group.id; let index = $index) {
+        <li class="grid gap-4 py-8 md:grid-cols-12 md:items-center md:gap-8 md:py-9">
+          <div class="md:col-span-4">
+            <p class="text-xs tracking-[0.16em] text-faint">{{ indexLabel(index) }}</p>
+            <h3 class="mt-2 text-xl font-medium tracking-tight text-ink">
+              {{ 'skills.groups.' + group.id | transloco }}
+            </h3>
+          </div>
+          <ul class="skill-list flex flex-wrap gap-y-2 md:col-span-8">
+            @for (skill of group.skills; track skill) {
+              <li class="text-[15px] text-muted transition-colors duration-200 hover:text-ink">
+                {{ skill }}
+              </li>
+            }
+          </ul>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
