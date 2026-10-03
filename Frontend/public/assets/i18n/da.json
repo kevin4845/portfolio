@@ -3,6 +3,10 @@
     "title": "Kevin Møller Madsen — Softwareudvikler",
     "description": "Kevin Møller Madsen bygger software fra grænsefladen og ned til systemet, den kører på, og kan godt lide den del, hvor det faktisk skal virke."
   },
+  "maintenance": {
+    "title": "Under vedligeholdelse",
+    "body": "Jeg er i gang med nogle forbedringer. Kig forbi igen om lidt."
+  },
   "skip": "Spring til indhold",
   "nav": {
     "primary": "Primær",

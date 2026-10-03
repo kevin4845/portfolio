@@ -4,6 +4,7 @@ import { provideTransloco, TranslocoService } from '@jsverse/transloco';
 import { firstValueFrom } from 'rxjs';
 import { PreloadAllModules, provideRouter, withInMemoryScrolling, withPreloading } from '@angular/router';
 import { routes } from './app.routes';
+import { environment } from '../environments/environment';
 import { Language } from './core/i18n/language';
 import { fallbackLanguage, resolveInitialLanguage, supportedLanguages } from './core/i18n/languages';
 import { TranslocoHttpLoader } from './core/i18n/transloco-loader';
@@ -37,7 +38,11 @@ export const appConfig: ApplicationConfig = {
       }
 
       return Promise.all(pending).then(() =>
-        language.activate(initialLanguage).then(() => language.setDefaultTitle()),
+        language.activate(initialLanguage).then(() => {
+          if (!environment.maintenanceMode) {
+            language.setDefaultTitle();
+          }
+        }),
       );
     }),
     provideRouter(

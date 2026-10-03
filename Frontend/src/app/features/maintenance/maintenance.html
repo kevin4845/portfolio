@@ -1,0 +1,15 @@
+<section class="relative flex min-h-svh items-center" aria-labelledby="maintenance-title">
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="hero-atmosphere absolute inset-0"></div>
+  </div>
+
+  <div class="site-container relative w-full py-16">
+    <h1 id="maintenance-title" class="display-title max-w-xl font-medium text-balance text-ink">
+      {{ 'maintenance.title' | transloco }}
+    </h1>
+    <p class="mt-5 max-w-md text-lg leading-relaxed text-muted">
+      {{ 'maintenance.body' | transloco }}
+    </p>
+    <p class="mt-12 text-sm text-faint">{{ name }}</p>
+  </div>
+</section>

@@ -3,6 +3,10 @@
     "title": "Kevin Møller Madsen — Software Developer",
     "description": "Kevin Møller Madsen builds software from the interface down to the system it runs on, and likes the part where it has to actually work."
   },
+  "maintenance": {
+    "title": "Under maintenance",
+    "body": "We're currently making some improvements. Please check back shortly."
+  },
   "skip": "Skip to content",
   "nav": {
     "primary": "Primary",
