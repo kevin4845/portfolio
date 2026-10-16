@@ -33,9 +33,11 @@
           </li>
         }
       </ul>
-      <div class="ml-8">
-        <app-language-switch />
-      </div>
+      @if (showLanguages) {
+        <div class="ml-8">
+          <app-language-switch />
+        </div>
+      }
     </div>
 
     <button
@@ -66,9 +68,11 @@
           </li>
         }
       </ul>
-      <div class="border-t border-line py-4">
-        <app-language-switch />
-      </div>
+      @if (showLanguages) {
+        <div class="border-t border-line py-4">
+          <app-language-switch />
+        </div>
+      }
     </div>
   }
 </header>

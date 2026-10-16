@@ -9,8 +9,9 @@ import {
   AppLanguage,
   fallbackLanguage,
   isAppLanguage,
+  isOfferedLanguage,
   languageStorageKey,
-  supportedLanguages,
+  offeredLanguages,
 } from './languages';
 
 @Injectable({ providedIn: 'root' })
@@ -20,7 +21,7 @@ export class Language {
   private readonly document = inject(DOCUMENT);
   private readonly destroyRef = inject(DestroyRef);
 
-  readonly supported = supportedLanguages;
+  readonly supported = offeredLanguages;
   readonly active = toSignal(this.transloco.langChanges$, {
     initialValue: this.transloco.getActiveLang(),
   });
@@ -33,8 +34,9 @@ export class Language {
 
   /** Load the active language, then switch. The previous language stays up until the file is ready. */
   use(lang: AppLanguage): Promise<void> {
-    this.remember(lang);
-    return this.activate(lang);
+    const next = isOfferedLanguage(lang) ? lang : fallbackLanguage;
+    this.remember(next);
+    return this.activate(next);
   }
 
   activate(lang: string): Promise<void> {

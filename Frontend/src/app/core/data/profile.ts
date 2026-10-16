@@ -7,17 +7,17 @@ export const profile: Profile = {
   links: [
     {
       id: 'email',
-      href: 'mailto:replace-me@example.com',
+      href: 'mailto:madsen070602@hotmail.com',
       external: false,
     },
     {
       id: 'github',
-      href: 'https://github.com/replace-me',
+      href: 'https://github.com/kevin4845',
       external: true,
     },
     {
       id: 'linkedin',
-      href: 'https://www.linkedin.com/in/replace-me',
+      href: 'https://www.linkedin.com/in/kevin-m%C3%B8ller-madsen/',
       external: true,
     },
   ],

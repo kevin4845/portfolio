@@ -6,7 +6,10 @@ import { ProjectImage } from '../../core/models/project';
   template: `
     <figure class="project-frame">
       <img
-        class="aspect-[16/10] w-full object-cover object-top"
+        class="aspect-[16/10] w-full"
+        [class.object-cover]="image().fit !== 'contain'"
+        [class.object-top]="image().fit !== 'contain'"
+        [class.object-contain]="image().fit === 'contain'"
         [src]="image().src"
         [alt]="image().alt"
         [attr.loading]="loading()"

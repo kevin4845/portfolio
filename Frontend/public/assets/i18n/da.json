@@ -101,7 +101,7 @@
   "projects": {
     "label": "Projekter",
     "title": "Ting jeg har bygget",
-    "intro": "En kort liste, med vilje. Siden her er et af dem. De andre er jeg stadig i gang med at skrive om.",
+    "intro": "En kort liste, med vilje. Siden her er et af dem.",
     "empty": "Projekter bliver tilføjet her.",
     "view": "Se projekt",
     "github": "GitHub",
@@ -114,6 +114,7 @@
         "category": "Applikation",
         "summary": "En porteføljeside, der også er et softwareprojekt — designet og bygget fra bunden.",
         "type": "Webapplikation",
+        "status": "Udgivet",
         "imageAlt": "Porteføljens forside, med navnet Kevin Møller Madsen og to handlinger.",
         "sourceNote": "Kildekoden ligger offentligt på GitHub, hvis man vil se, hvordan porteføljen er bygget.",
         "overview": [
@@ -200,25 +201,261 @@
           }
         ]
       },
-      "pimena": {
-        "name": "Pimena",
-        "category": "Projekt",
-        "summary": "Et rigtigt projekt. Jeg mangler stadig at skrive, hvad det er, hvad jeg har lavet, og hvor man kan se det."
+      "mc-profile": {
+        "name": "MC Profile",
+        "category": "Udvidelse",
+        "summary": "En Chrome-udvidelse, der viser, hvor gammel en Minecraft-konto er. Det viser Mojang og Microsoft ikke selv.",
+        "type": "Chrome-udvidelse",
+        "status": "Udgivet",
+        "imageAlt": "MC Profile-listingen, med popuppen over et Minecraft-landskab.",
+        "sourceNote": "Udgivet på Chrome Web Store.",
+        "overview": [
+          "Det startede i en samtale. Vi ville vide, hvor længe vi havde haft vores Minecraft-konti, men Mojang og Microsoft viser det ikke. Jeg fandt ud af, at ét API-kald på Mojangs site allerede returnerer den værdi.",
+          "MC Profile er den udvidelse, jeg byggede ud fra det. Den åbner som en popup og viser den konto, der allerede er logget ind: hvornår den blev oprettet, hvor gammel den er, hvor gammelt brugernavnet er, skinnet, capes og UUID.",
+          "Den læser den eksisterende session. Den beder ikke om en adgangskode, og den beder ikke om sin egen konto. Den er uofficiel og ikke tilknyttet Mojang eller Microsoft."
+        ],
+        "role": [
+          {
+            "area": "Produkt",
+            "detail": "Jeg har designet popuppen, så kontoen kan læses i ét blik."
+          },
+          {
+            "area": "Udvidelse",
+            "detail": "Jeg har bygget den, så den bruger den Minecraft-session, der allerede er logget ind, i stedet for et nyt login."
+          }
+        ],
+        "architecture": {
+          "paragraphs": [
+            "Udvidelsen er en popup. Den læser den Minecraft-session, der allerede er logget ind, og den beder ikke om en adgangskode eller en separat konto.",
+            "Kontoens alder kommer fra ét API-kald, som Mojangs site allerede laver. De øvrige oplysninger caches på maskinen, så popuppen ikke gentager de samme forespørgsler, næste gang den åbnes."
+          ]
+        },
+        "decisions": [
+          {
+            "title": "Det kald, Mojangs site allerede laver",
+            "body": "Kontosiderne viser ikke, hvor gammel kontoen er. Ét kald på Mojangs site returnerer den værdi, så udvidelsen bruger det."
+          },
+          {
+            "title": "En Chrome-udvidelse",
+            "body": "Den ligger i browseren, så der ikke er et separat site, man skal logge ind på."
+          },
+          {
+            "title": "Den session, der allerede findes",
+            "body": "Den læser Minecraft-sessionen. Adgangskoden bliver ikke tastet ind i udvidelsen."
+          },
+          {
+            "title": "En lokal cache",
+            "body": "Oplysningerne gemmes på maskinen, så de samme forespørgsler ikke sendes, hver gang popuppen åbnes."
+          },
+          {
+            "title": "Én popup",
+            "body": "Oprettelsesdato, alder, brugernavn, skin, capes, UUID og OG-status ligger i det samme view."
+          }
+        ],
+        "challenges": [
+          {
+            "problem": "Mojang og Microsoft lader dig ikke se, hvor gammel din konto er.",
+            "approach": "Ét API-kald, som Mojangs site allerede laver, returnerer den værdi. Udvidelsen læser den fra den session, der allerede er logget ind."
+          }
+        ],
+        "result": [
+          "Den er udgivet på Chrome Web Store.",
+          "Listingen dér er version 1.0.0."
+        ],
+        "screenshots": [
+          {
+            "alt": "MC Profile-listingen, med popuppen over et Minecraft-landskab.",
+            "caption": "Listning"
+          },
+          {
+            "alt": "MC Profile-logoet, en græsblok med et Steve-portræt og navnet.",
+            "caption": "Logo"
+          }
+        ]
       },
-      "bluenordix": {
-        "name": "BlueNordix",
-        "category": "Projekt",
-        "summary": "Et rigtigt projekt. Jeg mangler stadig at skrive, hvad det er, hvad jeg har lavet, og hvor man kan se det."
+      "danish-banknote-system": {
+        "name": "DanishBanknoteSystem",
+        "category": "Applikation",
+        "summary": "Et system til min samling af danske sedler: hvad jeg har, hvad jeg ønsker mig, og hvad samlingen er værd.",
+        "type": "Webapplikation",
+        "imageAlt": "Overblikket i Seddelkatalog, med samlingens fremgang, kvaliteter og en anslået værdi.",
+        "sourceNote": "Kildekoden ligger offentligt på GitHub.",
+        "overview": [
+          "Jeg samler på danske sedler, og jeg ville have ét sted at holde styr på dem. DanishBanknoteSystem er det system. I appen hedder det Seddelkatalog.",
+          "Det viser, hvad jeg har, en ønskeliste og statistik over, hvad samlingen er værd. Sedlerne, priserne og kvaliteterne kommer fra kataloget på seddelkataloget.dk.",
+          "Kataloget er en PDF. Jeg kørte den gennem en online OCR-motor og brugte resultatet til priser, kvaliteter og resten af katalogdataene."
+        ],
+        "role": [
+          {
+            "area": "Produkt",
+            "detail": "Jeg har bygget det omkring min egen samling: de sedler jeg har, en ønskeliste og en værdi."
+          },
+          {
+            "area": "Applikation",
+            "detail": "Jeg har bygget Angular-grænsefladen og Laravel-backenden, som holder kataloget og samlingen."
+          }
+        ],
+        "architecture": {
+          "paragraphs": [
+            "Repositoriet er en Laravel-applikation, med en Angular-frontend i frontend/. Jeg kører den lokalt med DDEV.",
+            "Katalogdataene, inklusive priser og kvaliteter, kommer fra Seddelkatalogets PDF, læst med en online OCR-motor. Samlingen og ønskelisten ligger oven på det katalog."
+          ]
+        },
+        "decisions": [
+          {
+            "title": "Kataloget, ikke en tom liste",
+            "body": "Sedlerne, priserne og kvaliteterne kommer fra Seddelkataloget, så samlingen måles op mod det rigtige katalog."
+          },
+          {
+            "title": "OCR i stedet for at taste PDF'en ind",
+            "body": "Kataloget er en PDF. En online OCR-motor trak priser, kvaliteter og de øvrige felter ud."
+          },
+          {
+            "title": "Samling, ønskeliste og værdi samlet",
+            "body": "Overblikket viser fremgang, fordelingen på kvaliteter og en anslået værdi. I søgningen kan en seddel lægges i samlingen eller på ønskelisten."
+          },
+          {
+            "title": "Hvad jeg gav, og hvad kataloget siger",
+            "body": "Samlingen kan gemme en købspris. Ønskelisten og seddelsiden viser katalogprisen for hver kvalitet."
+          }
+        ],
+        "challenges": [
+          {
+            "problem": "Kataloget, jeg ville bruge, er en PDF og ikke en database.",
+            "approach": "Jeg trak priser, kvaliteter og de øvrige poster ud med en online OCR-motor og lagde dem ind i systemet."
+          }
+        ],
+        "result": [
+          "Jeg bruger det til min egen samling: hvad jeg ejer, hvad jeg ønsker mig, og en anslået værdi ud fra kataloget.",
+          "Kildekoden ligger offentligt på GitHub."
+        ],
+        "screenshots": [
+          {
+            "alt": "Overblikket i Seddelkatalog, med samlingens fremgang, et diagram over kvaliteter og en anslået værdi.",
+            "caption": "Overblik"
+          },
+          {
+            "alt": "Søgning, med en seddel, katalogpriser efter kvalitet og knapper til at lægge den i samlingen eller på ønskelisten.",
+            "caption": "Søgning"
+          },
+          {
+            "alt": "Min samling, en tabel over sedler jeg har, med årstal, kvalitet og datoen de blev tilføjet.",
+            "caption": "Samling"
+          },
+          {
+            "alt": "Min ønskeliste, med en seddel og dens katalogpris.",
+            "caption": "Ønskeliste"
+          }
+        ]
       },
-      "pim-system": {
-        "name": "PIM System",
-        "category": "Projekt",
-        "summary": "Et rigtigt projekt. Jeg mangler stadig at skrive, hvad det er, hvad jeg har lavet, og hvor man kan se det."
-      },
-      "proximity-voice": {
-        "name": "Proximity Voice",
-        "category": "Projekt",
-        "summary": "Et rigtigt projekt. Jeg mangler stadig at skrive, hvad det er, hvad jeg har lavet, og hvor man kan se det."
+      "elunio": {
+        "name": "Elunio",
+        "category": "SaaS",
+        "summary": "En privat SaaS-platform til virksomheder, der giver tilbud på servicearbejde. De bygger en beregner og lægger den på det website, de allerede har.",
+        "type": "SaaS-platform",
+        "status": "Under udvikling",
+        "imageAlt": "Elunios produktside, med en beregner til plænepleje og en vejledende pris.",
+        "sourceNote": "Privat, og ikke i produktion.",
+        "overview": [
+          "Elunio er en SaaS-platform, jeg bygger selv, til virksomheder der giver tilbud på servicearbejde. Virksomheden sætter en beregner op. Kunden svarer på et par spørgsmål på virksomhedens website og får en vejledende pris.",
+          "Editoren er visuel. Et spørgsmål kan være et tal, en kort tekst, ét valg, flere valg, en dropdown eller ja/nej. Det kan være påkrævet, og det kan være skjult, indtil et andet svar gør det relevant. Prisen kan være fast, pr. enhed, en procent, et trin eller en formel.",
+          "En færdig beregning er en tilbudsforespørgsel, ikke det endelige tilbud. Virksomheden gennemgår den, laver tilbuddet med linjer, og kunden kan acceptere det. Hver virksomhed har sit eget workspace, så beregnere, kunder og tilbud bliver hos den virksomhed."
+        ],
+        "role": [
+          {
+            "area": "Produkt",
+            "detail": "Jeg har lagt vejen fra et spørgsmål på kundens site til et tilbud, virksomheden kan sende."
+          },
+          {
+            "area": "Frontend",
+            "detail": "Jeg har bygget Angular-grænsefladen, med editoren til beregneren og forhåndsvisningen af det, kunden ser."
+          },
+          {
+            "area": "Backend",
+            "detail": "Jeg har bygget Laravel-API'et til beregnere, prissætning, tilbud og adgang pr. workspace."
+          }
+        ],
+        "architecture": {
+          "paragraphs": [
+            "Workspacet er en Angular-applikation. Laravel ligger bagved som API. Når man logger ind, lander man i et workspace, og beregnere, kunder og tilbud hører til det.",
+            "En beregner er konfiguration. Spørgsmålene, hvornår de vises, og hvordan prisen regnes, ligger på beregneren. Gem beholder et udkast. Udgiv er det, der erstatter den version, kunden ser."
+          ]
+        },
+        "decisions": [
+          {
+            "title": "Konfiguration, ikke en formular pr. virksomhed",
+            "body": "En ny beregner er nye data. Den kræver ikke sin egen side i kodebasen."
+          },
+          {
+            "title": "Udkast, så udgiv",
+            "body": "Editoren kan ændre spørgsmål og priser, uden at en ufærdig beregner bliver vist til kunder."
+          },
+          {
+            "title": "Et estimat, så et tilbud",
+            "body": "Beregneren giver en vejledende pris. Virksomheden skriver stadig tilbuddet, med linjer, før kunden accepterer."
+          },
+          {
+            "title": "Ét workspace pr. virksomhed",
+            "body": "Adgangen er afgrænset til workspace. En anden virksomheds beregnere og tilbud holdes adskilt."
+          },
+          {
+            "title": "Fakturering er stadig under udvikling",
+            "body": "Faktureringssiden har Free og Pro, og Agency er med i planen. Stripe er under udvikling. WordPress og Shopify er planlagt."
+          }
+        ],
+        "challenges": [
+          {
+            "problem": "En pris er sjældent ét tal.",
+            "approach": "Et job kan blande et fast beløb, en pris pr. enhed, en procent og et trin. Prisen skal følge svarene, også de spørgsmål kunden ikke nåede frem til."
+          },
+          {
+            "problem": "Et spørgsmål, der ikke skal vises endnu.",
+            "approach": "Senere spørgsmål afhænger af tidligere svar. Et skjult spørgsmål må ikke ændre prisen."
+          },
+          {
+            "problem": "Flere virksomheder, ét produkt.",
+            "approach": "Hvert workspace har sine egne beregnere, kunder og tilbud. Man ser kun det workspace, man hører til."
+          }
+        ],
+        "result": [
+          "Et workspace kan bygge en beregner, sætte prisen, se kundens visning og udgive den.",
+          "Tilbudsforespørgsler lander i workspacet, og en forespørgsel kan gå fra ny til lukket.",
+          "Det er ikke i produktion. Stripe er stadig under udvikling. WordPress og Shopify er planlagt."
+        ],
+        "screenshots": [
+          {
+            "alt": "Elunios produktside, med en beregner til plænepleje og en vejledende pris.",
+            "caption": "Produkt"
+          },
+          {
+            "alt": "Editoren til beregneren, med nummererede spørgsmål, spørgsmålstyper og indstillinger for et påkrævet tal.",
+            "caption": "Editor"
+          },
+          {
+            "alt": "En forhåndsvisning af den beregner, en kunde skulle udfylde, med en knap til at anmode om et tilbud.",
+            "caption": "Forhåndsvisning"
+          },
+          {
+            "alt": "En liste over beregnere i et workspace, med status som udkast og udgivet.",
+            "caption": "Beregnere"
+          },
+          {
+            "alt": "En liste over tilbudsforespørgsler, med vejledende pris og status.",
+            "caption": "Tilbud"
+          },
+          {
+            "alt": "Et workspace-overblik med aktivitet på tilbud.",
+            "caption": "Overblik"
+          },
+          {
+            "alt": "Faktureringssiden, med planerne Free og Pro.",
+            "caption": "Fakturering"
+          },
+          {
+            "alt": "Elunios log ind-side til et workspace.",
+            "caption": "Log ind"
+          }
+        ]
       }
     }
   },
@@ -239,7 +476,11 @@
     "decisions": "Tekniske valg",
     "challenges": "Udfordringer",
     "result": "Resultat",
-    "screenshots": "Skærmbilleder"
+    "screenshots": "Skærmbilleder",
+    "viewShot": "Vis {{name}} i større format",
+    "previousShot": "Forrige",
+    "nextShot": "Næste",
+    "closeShot": "Luk"
   },
   "education": {
     "label": "Uddannelse",

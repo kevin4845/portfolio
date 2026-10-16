@@ -3,6 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter } from 'rxjs';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { offeredLanguages } from '../core/i18n/languages';
 import { Portfolio } from '../core/portfolio';
 import { scrollBehavior } from '../core/motion';
 import { LanguageSwitch } from './language-switch';
@@ -26,6 +27,7 @@ export class SiteHeader {
   protected readonly open = signal(false);
   protected readonly scrolled = signal(false);
   protected readonly active = signal('');
+  protected readonly showLanguages = offeredLanguages.length > 1;
 
   constructor() {
     afterNextRender(() => {

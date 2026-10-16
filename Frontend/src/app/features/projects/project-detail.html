@@ -217,16 +217,49 @@
             <ul class="project-gallery">
               @for (shot of project.screenshots; track shot.src; let index = $index) {
                 <li>
-                  <app-project-figure
-                    [image]="{
-                      src: shot.src,
-                      alt: story.screenshots?.[index]?.alt || story.name,
-                      caption: story.screenshots?.[index]?.caption,
-                    }"
-                  />
+                  <button
+                    type="button"
+                    class="project-shot"
+                    [attr.aria-label]="'projectDetail.viewShot' | transloco: { name: story.screenshots?.[index]?.caption || story.screenshots?.[index]?.alt || story.name }"
+                    (click)="openShot(index)"
+                  >
+                    <app-project-figure
+                      [image]="{
+                        src: shot.src,
+                        alt: story.screenshots?.[index]?.alt || story.name,
+                        caption: story.screenshots?.[index]?.caption,
+                        fit: shot.fit,
+                      }"
+                    />
+                  </button>
                 </li>
               }
             </ul>
+            <dialog
+              #lightbox
+              class="shot-lightbox"
+              aria-labelledby="shot-lightbox-title"
+              (click)="onLightboxClick($event)"
+              (close)="onDialogClose()"
+              (keydown)="onLightboxKey($event)"
+            >
+              @if (activeShot(); as shot) {
+                <div class="shot-lightbox-bar">
+                  <p id="shot-lightbox-title" class="shot-lightbox-title">{{ shot.caption || shot.alt }}</p>
+                  <p class="shot-lightbox-count">{{ (openIndex() ?? 0) + 1 }} / {{ project.screenshots.length }}</p>
+                  <button type="button" class="shot-lightbox-close" (click)="closeShot()">
+                    {{ 'projectDetail.closeShot' | transloco }}
+                  </button>
+                </div>
+                <img [src]="shot.src" [alt]="shot.alt" />
+                @if (project.screenshots.length > 1) {
+                  <div class="shot-lightbox-nav">
+                    <button type="button" (click)="stepShot(-1)">{{ 'projectDetail.previousShot' | transloco }}</button>
+                    <button type="button" (click)="stepShot(1)">{{ 'projectDetail.nextShot' | transloco }}</button>
+                  </div>
+                }
+              }
+            </dialog>
           </section>
         }
 

@@ -101,7 +101,7 @@
   "projects": {
     "label": "Projects",
     "title": "Things I've built",
-    "intro": "A short list, on purpose. This site is one of them. The others are still being written up.",
+    "intro": "A short list, on purpose. This site is one of them.",
     "empty": "Projects will be added here.",
     "view": "View project",
     "github": "GitHub",
@@ -114,6 +114,7 @@
         "category": "Application",
         "summary": "A portfolio website that is also a software project — designed and built from scratch.",
         "type": "Web application",
+        "status": "Live",
         "imageAlt": "The portfolio homepage, with the name Kevin Møller Madsen and two actions.",
         "sourceNote": "The source is public on GitHub, for anyone who wants to see how the portfolio is built.",
         "overview": [
@@ -200,25 +201,261 @@
           }
         ]
       },
-      "pimena": {
-        "name": "Pimena",
-        "category": "Project",
-        "summary": "A real project. I still need to write up what it is, what I did, and where to see it."
+      "mc-profile": {
+        "name": "MC Profile",
+        "category": "Extension",
+        "summary": "A Chrome extension that shows how old a Minecraft account is. Mojang and Microsoft do not show that themselves.",
+        "type": "Chrome extension",
+        "status": "Live",
+        "imageAlt": "MC Profile listing, with the popup over a Minecraft landscape.",
+        "sourceNote": "Published on the Chrome Web Store.",
+        "overview": [
+          "It started in a conversation. We wanted to know how long we had had our Minecraft accounts, but Mojang and Microsoft do not show that. I found that one API call on Mojang's site already returns the value.",
+          "MC Profile is the extension I built from that. It opens as a popup and shows the account that is already signed in: when it was created, how old it is, how old the username is, the skin, the capes, and the UUID.",
+          "It reads the existing session. It does not ask for a password, and it does not ask for an account of its own. It is unofficial, and it is not affiliated with Mojang or Microsoft."
+        ],
+        "role": [
+          {
+            "area": "Product",
+            "detail": "I designed the popup so the account can be read at a glance."
+          },
+          {
+            "area": "Extension",
+            "detail": "I built it to use the Minecraft session that is already signed in, instead of a new login."
+          }
+        ],
+        "architecture": {
+          "paragraphs": [
+            "The extension is a popup. It reads the Minecraft session that is already signed in, and it does not ask for a password or a separate account.",
+            "Account age comes from one API call Mojang's site already makes. The other details are cached on the machine, so opening the popup again does not repeat the same requests."
+          ]
+        },
+        "decisions": [
+          {
+            "title": "The call Mojang's site already makes",
+            "body": "The account pages do not show how old the account is. One request on Mojang's site returns that value, so the extension uses it."
+          },
+          {
+            "title": "A Chrome extension",
+            "body": "It lives in the browser, so there is no separate site to sign in to."
+          },
+          {
+            "title": "The session that is already there",
+            "body": "It reads the Minecraft session. The password is never typed into the extension."
+          },
+          {
+            "title": "A local cache",
+            "body": "Details are kept on the machine, so the same requests are not sent every time the popup opens."
+          },
+          {
+            "title": "One popup",
+            "body": "Creation date, age, username, skin, capes, UUID, and OG status sit in the same view."
+          }
+        ],
+        "challenges": [
+          {
+            "problem": "Mojang and Microsoft do not let you see how old your account is.",
+            "approach": "One API call that Mojang's site already makes returns that value. The extension reads it from the session that is already signed in."
+          }
+        ],
+        "result": [
+          "It is published on the Chrome Web Store.",
+          "The listing there is version 1.0.0."
+        ],
+        "screenshots": [
+          {
+            "alt": "MC Profile listing, with the popup over a Minecraft landscape.",
+            "caption": "Listing"
+          },
+          {
+            "alt": "The MC Profile logo, a grass block with a Steve portrait and the name.",
+            "caption": "Logo"
+          }
+        ]
       },
-      "bluenordix": {
-        "name": "BlueNordix",
-        "category": "Project",
-        "summary": "A real project. I still need to write up what it is, what I did, and where to see it."
+      "danish-banknote-system": {
+        "name": "DanishBanknoteSystem",
+        "category": "Application",
+        "summary": "A system for my Danish banknote collection: what I own, what I want, and what the collection is worth.",
+        "type": "Web application",
+        "imageAlt": "Seddelkatalog overview, with collection progress, grades, and an estimated value.",
+        "sourceNote": "The source is public on GitHub.",
+        "overview": [
+          "I collect Danish banknotes, and I wanted one place to keep track of them. DanishBanknoteSystem is that system. In the app it is called Seddelkatalog.",
+          "It shows what I have, a wishlist, and statistics on what the collection is worth. The notes, prices, and grades come from the catalog at seddelkataloget.dk.",
+          "That catalog is a PDF. I ran it through an online OCR engine and used the result for the prices, the grades, and the rest of the catalog data."
+        ],
+        "role": [
+          {
+            "area": "Product",
+            "detail": "I shaped it around my own collection: the notes I own, a wishlist, and a value."
+          },
+          {
+            "area": "Application",
+            "detail": "I built the Angular interface and the Laravel backend that hold the catalog and the collection."
+          }
+        ],
+        "architecture": {
+          "paragraphs": [
+            "The repository is a Laravel application, with an Angular frontend in frontend/. I run it locally with DDEV.",
+            "The catalog data, prices and grades included, comes from the Seddelkataloget PDF, read with an online OCR engine. The collection and the wishlist sit on top of that catalog."
+          ]
+        },
+        "decisions": [
+          {
+            "title": "The catalog, not a blank list",
+            "body": "The notes, prices, and grades come from Seddelkataloget, so the collection is measured against the real catalog."
+          },
+          {
+            "title": "OCR, instead of typing the PDF",
+            "body": "The catalog is a PDF. An online OCR engine pulled out the prices, the grades, and the other fields."
+          },
+          {
+            "title": "Collection, wishlist, and value together",
+            "body": "The overview shows progress, the mix of grades, and an estimated value. Search is where a note is added to the collection or the wishlist."
+          },
+          {
+            "title": "What I paid, and what the catalog says",
+            "body": "The collection can store a purchase price. The wishlist and the note page show the catalog price for each grade."
+          }
+        ],
+        "challenges": [
+          {
+            "problem": "The catalog I wanted to use is a PDF, not a database.",
+            "approach": "I extracted the prices, grades, and the rest of the entries with an online OCR engine, and loaded that into the system."
+          }
+        ],
+        "result": [
+          "I use it for my own collection: what I own, what I want, and an estimated value based on the catalog.",
+          "The source is public on GitHub."
+        ],
+        "screenshots": [
+          {
+            "alt": "Seddelkatalog overview, with collection progress, a grade chart, and an estimated value.",
+            "caption": "Overview"
+          },
+          {
+            "alt": "Search, with a banknote, its catalog prices by grade, and actions to add it to the collection or the wishlist.",
+            "caption": "Search"
+          },
+          {
+            "alt": "My Collection, a table of owned notes with year, condition, and the date they were added.",
+            "caption": "Collection"
+          },
+          {
+            "alt": "My Wishlist, with a note and its catalog price.",
+            "caption": "Wishlist"
+          }
+        ]
       },
-      "pim-system": {
-        "name": "PIM System",
-        "category": "Project",
-        "summary": "A real project. I still need to write up what it is, what I did, and where to see it."
-      },
-      "proximity-voice": {
-        "name": "Proximity Voice",
-        "category": "Project",
-        "summary": "A real project. I still need to write up what it is, what I did, and where to see it."
+      "elunio": {
+        "name": "Elunio",
+        "category": "SaaS",
+        "summary": "A private SaaS platform for service businesses. They build a quote calculator and place it on the website they already have.",
+        "type": "SaaS platform",
+        "status": "In development",
+        "imageAlt": "The Elunio product page, with a lawn-care quote calculator and an estimated price.",
+        "sourceNote": "Private, and not in production.",
+        "overview": [
+          "Elunio is a SaaS platform I am building on my own, for businesses that quote service work. The business builds a calculator. A customer on their website answers a few questions and gets an estimated price.",
+          "The builder is visual. A question can be a number, a short text, one choice, several choices, a dropdown, or yes or no. It can be required, and it can stay hidden until another answer makes it relevant. The price can be fixed, per unit, a percentage, a tier, or a formula.",
+          "A finished calculation is a quote request, not the final quote. The business reviews it, prepares the quote with line items, and the customer can accept it. Each business has its own workspace, so calculators, customers, and quotes stay with that business."
+        ],
+        "role": [
+          {
+            "area": "Product",
+            "detail": "I defined the path from a question on the customer's site to a quote the business can send."
+          },
+          {
+            "area": "Frontend",
+            "detail": "I built the Angular interface, including the calculator editor and the preview of what the customer sees."
+          },
+          {
+            "area": "Backend",
+            "detail": "I built the Laravel API for calculators, pricing, quotes, and access scoped to a workspace."
+          }
+        ],
+        "architecture": {
+          "paragraphs": [
+            "The workspace is an Angular application. Laravel serves the API behind it. Signing in opens a workspace, and the calculators, customers, and quotes belong to that workspace.",
+            "A calculator is configuration. The questions, when they appear, and how the price is calculated are stored with it. Saving keeps a draft. Publishing replaces the version a customer sees."
+          ]
+        },
+        "decisions": [
+          {
+            "title": "Configuration, not a form per business",
+            "body": "A new calculator is new data. It does not need its own page in the codebase."
+          },
+          {
+            "title": "Draft, then publish",
+            "body": "The editor can change questions and prices without putting an unfinished calculator in front of customers."
+          },
+          {
+            "title": "An estimate, then a quote",
+            "body": "The calculator returns an estimated price. The business still writes the quote, with line items, before the customer accepts it."
+          },
+          {
+            "title": "One workspace per business",
+            "body": "Access is scoped to the workspace. Another company's calculators and quotes are kept apart."
+          },
+          {
+            "title": "Billing is still being built",
+            "body": "The billing screen has Free and Pro, and Agency is part of the plan. Stripe is under development. WordPress and Shopify embeds are planned."
+          }
+        ],
+        "challenges": [
+          {
+            "problem": "A price is rarely one number.",
+            "approach": "A job can mix a fixed fee, a price per unit, a percentage, and a tier. The price has to follow the answers, including questions the customer never reached."
+          },
+          {
+            "problem": "A question that should not appear yet.",
+            "approach": "Later questions depend on earlier answers. A hidden question cannot change the price."
+          },
+          {
+            "problem": "More than one business, one product.",
+            "approach": "Each workspace keeps its own calculators, customers, and quotes. A person only sees the workspace they belong to."
+          }
+        ],
+        "result": [
+          "A workspace can build a calculator, set the pricing, preview the customer view, and publish it.",
+          "Quote requests come back into the workspace, and a request can move from new to closed.",
+          "It is not in production. Stripe billing is still being built. WordPress and Shopify are planned."
+        ],
+        "screenshots": [
+          {
+            "alt": "The Elunio product page, with a lawn-care quote calculator and an estimated price.",
+            "caption": "Product"
+          },
+          {
+            "alt": "The calculator editor, with numbered questions, question types, and properties for a required number.",
+            "caption": "Builder"
+          },
+          {
+            "alt": "A preview of the calculator a customer would fill in, with a request-quote action.",
+            "caption": "Preview"
+          },
+          {
+            "alt": "A list of calculators in a workspace, with draft and published status.",
+            "caption": "Calculators"
+          },
+          {
+            "alt": "A list of quote requests, with estimated price and status.",
+            "caption": "Quotes"
+          },
+          {
+            "alt": "A workspace dashboard with quote activity.",
+            "caption": "Dashboard"
+          },
+          {
+            "alt": "The billing screen, with Free and Pro plans.",
+            "caption": "Billing"
+          },
+          {
+            "alt": "The Elunio sign-in screen for a workspace.",
+            "caption": "Sign in"
+          }
+        ]
       }
     }
   },
@@ -239,7 +476,11 @@
     "decisions": "Technical decisions",
     "challenges": "Challenges",
     "result": "Result",
-    "screenshots": "Screenshots"
+    "screenshots": "Screenshots",
+    "viewShot": "View {{name}} larger",
+    "previousShot": "Previous",
+    "nextShot": "Next",
+    "closeShot": "Close"
   },
   "education": {
     "label": "Education",

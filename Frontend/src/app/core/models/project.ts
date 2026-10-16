@@ -1,11 +1,14 @@
 export interface ProjectAsset {
   src: string;
+  /** Square marks use `contain` so the shared 16:10 frame does not crop them. */
+  fit?: 'cover' | 'contain';
 }
 
 export interface ProjectImage {
   src: string;
   alt: string;
   caption?: string;
+  fit?: 'cover' | 'contain';
 }
 
 export interface ProjectLink {

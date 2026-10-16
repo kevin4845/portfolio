@@ -3,6 +3,12 @@ export const supportedLanguages = ['en', 'da'] as const;
 
 export type AppLanguage = (typeof supportedLanguages)[number];
 
+/**
+ * Languages a visitor can see. Danish translations stay in `da.json`.
+ * Add `'da'` here when that copy is ready to publish.
+ */
+export const offeredLanguages: readonly AppLanguage[] = ['en'];
+
 export const languageStorageKey = 'portfolio.lang';
 
 export const fallbackLanguage: AppLanguage = 'en';
@@ -11,21 +17,25 @@ export function isAppLanguage(value: string | null | undefined): value is AppLan
   return supportedLanguages.some((language) => language === value);
 }
 
+export function isOfferedLanguage(value: string | null | undefined): value is AppLanguage {
+  return offeredLanguages.some((language) => language === value);
+}
+
 /**
- * Manual choice wins. Otherwise the first supported browser language wins.
- * `da-DK` and `en-GB` match on the language prefix. Anything else falls back to English.
+ * Manual choice wins. Otherwise the first offered browser language wins.
+ * `en-GB` matches on the language prefix. Anything else falls back to English.
  */
 export function resolveLanguage(
   stored: string | null,
   browserLanguages: readonly string[],
 ): AppLanguage {
-  if (isAppLanguage(stored)) {
+  if (isOfferedLanguage(stored)) {
     return stored;
   }
 
   for (const language of browserLanguages) {
     const prefix = language.toLowerCase().split('-')[0];
-    if (isAppLanguage(prefix)) {
+    if (isOfferedLanguage(prefix)) {
       return prefix;
     }
   }

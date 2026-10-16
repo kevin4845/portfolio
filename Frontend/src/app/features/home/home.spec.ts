@@ -29,7 +29,7 @@ describe('Home', () => {
     expect(text).toContain('Apprenticeship');
     expect(text).toContain('NordicScreen');
     expect(text).not.toContain('SPAR');
-    expect(text).toContain('Pimena');
+    expect(text).toContain('MC Profile');
     expect(text).toContain('Where I learned the craft');
     expect(text).toContain('Vocational Education');
     expect(text).toContain('Mercantec · Viborg');
@@ -42,7 +42,17 @@ describe('Home', () => {
     expect(fixture.nativeElement.querySelector('#projects')).toBeTruthy();
     expect(text).toContain('Personal Portfolio');
     expect(fixture.nativeElement.querySelector('a[href="/projects/personal-portfolio"]')).toBeTruthy();
-    expect(fixture.nativeElement.querySelector('a[href="/projects/pimena"]')).toBeTruthy();
+    expect(text).toContain('DanishBanknoteSystem');
+    expect(fixture.nativeElement.querySelector('a[href="/projects/danish-banknote-system"]')).toBeTruthy();
+    const projectLinks = [...fixture.nativeElement.querySelectorAll('#projects a[href^="/projects/"]')].map(
+      (link: HTMLAnchorElement) => link.getAttribute('href'),
+    );
+    expect(projectLinks).toEqual([
+      '/projects/personal-portfolio',
+      '/projects/elunio',
+      '/projects/danish-banknote-system',
+      '/projects/mc-profile',
+    ]);
     expect(
       fixture.nativeElement.querySelector('img[src="kevin01.jpg"]')?.getAttribute('alt'),
     ).toBe('Portrait of Kevin Møller Madsen.');
